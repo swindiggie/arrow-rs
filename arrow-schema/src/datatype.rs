@@ -645,7 +645,7 @@ impl DataType {
     }
 
     /// Create a [`DataType::List`] with elements of the specified type
-    /// and nullability, and conventionally named inner [`Field`] (`"item"`).
+    /// and nullability, and conventionally named inner [`Field`] (`"element"`).
     ///
     /// To specify field level metadata, construct the inner [`Field`]
     /// directly via [`Field::new`] or [`Field::new_list_field`].
@@ -654,7 +654,7 @@ impl DataType {
     }
 
     /// Create a [`DataType::LargeList`] with elements of the specified type
-    /// and nullability, and conventionally named inner [`Field`] (`"item"`).
+    /// and nullability, and conventionally named inner [`Field`] (`"element"`).
     ///
     /// To specify field level metadata, construct the inner [`Field`]
     /// directly via [`Field::new`] or [`Field::new_list_field`].
@@ -663,7 +663,7 @@ impl DataType {
     }
 
     /// Create a [`DataType::FixedSizeList`] with elements of the specified type, size
-    /// and nullability, and conventionally named inner [`Field`] (`"item"`).
+    /// and nullability, and conventionally named inner [`Field`] (`"element"`).
     ///
     /// To specify field level metadata, construct the inner [`Field`]
     /// directly via [`Field::new`] or [`Field::new_list_field`].
@@ -745,21 +745,21 @@ mod tests {
     #[test]
     fn test_list_datatype_equality() {
         // tests that list type equality is checked while ignoring list names
-        let list_a = DataType::List(Arc::new(Field::new("item", DataType::Int32, true)));
+        let list_a = DataType::List(Arc::new(Field::new("element", DataType::Int32, true)));
         let list_b = DataType::List(Arc::new(Field::new("array", DataType::Int32, true)));
-        let list_c = DataType::List(Arc::new(Field::new("item", DataType::Int32, false)));
-        let list_d = DataType::List(Arc::new(Field::new("item", DataType::UInt32, true)));
+        let list_c = DataType::List(Arc::new(Field::new("element", DataType::Int32, false)));
+        let list_d = DataType::List(Arc::new(Field::new("element", DataType::UInt32, true)));
         assert!(list_a.equals_datatype(&list_b));
         assert!(!list_a.equals_datatype(&list_c));
         assert!(!list_b.equals_datatype(&list_c));
         assert!(!list_a.equals_datatype(&list_d));
 
         let list_e =
-            DataType::FixedSizeList(Arc::new(Field::new("item", list_a.clone(), false)), 3);
+            DataType::FixedSizeList(Arc::new(Field::new("element", list_a.clone(), false)), 3);
         let list_f =
             DataType::FixedSizeList(Arc::new(Field::new("array", list_b.clone(), false)), 3);
         let list_g = DataType::FixedSizeList(
-            Arc::new(Field::new("item", DataType::FixedSizeBinary(3), true)),
+            Arc::new(Field::new("element", DataType::FixedSizeBinary(3), true)),
             3,
         );
         assert!(list_e.equals_datatype(&list_f));

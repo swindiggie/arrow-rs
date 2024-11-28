@@ -1320,7 +1320,7 @@ mod tests {
 
         // [[], [1], [2, 3], null, [4], null, [6, 7, 8]]
         let data = ArrayDataBuilder::new(ArrowDataType::List(Arc::new(Field::new(
-            "item",
+            "element",
             decimals.data_type().clone(),
             false,
         ))))
@@ -2489,7 +2489,7 @@ mod tests {
 
         let arrow_field = Field::new(
             "emptylist",
-            ArrowDataType::List(Arc::new(Field::new("item", ArrowDataType::Null, true))),
+            ArrowDataType::List(Arc::new(Field::new("element", ArrowDataType::Null, true))),
             true,
         );
 
@@ -2590,7 +2590,7 @@ mod tests {
     fn test_row_group_batch(row_group_size: usize, batch_size: usize) {
         let schema = Arc::new(Schema::new(vec![Field::new(
             "list",
-            ArrowDataType::List(Arc::new(Field::new("item", ArrowDataType::Int32, true))),
+            ArrowDataType::List(Arc::new(Field::new("element", ArrowDataType::Int32, true))),
             true,
         )]));
 
@@ -3147,7 +3147,7 @@ mod tests {
     fn test_list_selection() {
         let schema = Arc::new(Schema::new(vec![Field::new_list(
             "list",
-            Field::new("item", ArrowDataType::Utf8, true),
+            Field::new("element", ArrowDataType::Utf8, true),
             false,
         )]));
         let mut buf = Vec::with_capacity(1024);
@@ -3203,7 +3203,7 @@ mod tests {
         let mut rng = thread_rng();
         let schema = Arc::new(Schema::new(vec![Field::new_list(
             "list",
-            Field::new_list("item", Field::new("item", ArrowDataType::Int32, true), true),
+            Field::new_list("element", Field::new("element", ArrowDataType::Int32, true), true),
             true,
         )]));
         let mut buf = Vec::with_capacity(1024);

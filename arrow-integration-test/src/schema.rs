@@ -150,7 +150,7 @@ mod tests {
                 Field::new("c21", DataType::Interval(IntervalUnit::MonthDayNano), false),
                 Field::new(
                     "c22",
-                    DataType::List(Arc::new(Field::new("item", DataType::Boolean, true))),
+                    DataType::List(Arc::new(Field::new("element", DataType::Boolean, true))),
                     false,
                 ),
                 Field::new(
@@ -437,7 +437,7 @@ mod tests {
                         },
                         "children": [
                             {
-                                "name": "item",
+                                "name": "element",
                                 "nullable": true,
                                 "type": {
                                     "name": "bool"

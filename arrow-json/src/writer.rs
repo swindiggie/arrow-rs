@@ -528,7 +528,7 @@ mod tests {
     #[test]
     fn write_list_of_dictionary() {
         let dict_field = Arc::new(Field::new_dictionary(
-            "item",
+            "element",
             DataType::Int32,
             DataType::Utf8,
             true,
@@ -568,7 +568,7 @@ mod tests {
     #[test]
     fn write_list_of_dictionary_large_values() {
         let dict_field = Arc::new(Field::new_dictionary(
-            "item",
+            "element",
             DataType::Int32,
             DataType::LargeUtf8,
             true,
@@ -1727,7 +1727,7 @@ mod tests {
     #[test]
     fn test_writer_fixed_size_list() {
         let size = 3;
-        let field = FieldRef::new(Field::new("item", DataType::Int32, true));
+        let field = FieldRef::new(Field::new("element", DataType::Int32, true));
         let schema = SchemaRef::new(Schema::new(vec![Field::new(
             "list",
             DataType::FixedSizeList(field, size),

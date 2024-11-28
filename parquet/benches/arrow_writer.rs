@@ -189,17 +189,17 @@ fn create_list_primitive_bench_batch(
     let fields = vec![
         Field::new(
             "_1",
-            DataType::List(Arc::new(Field::new("item", DataType::Int32, true))),
+            DataType::List(Arc::new(Field::new("element", DataType::Int32, true))),
             true,
         ),
         Field::new(
             "_2",
-            DataType::List(Arc::new(Field::new("item", DataType::Boolean, true))),
+            DataType::List(Arc::new(Field::new("element", DataType::Boolean, true))),
             true,
         ),
         Field::new(
             "_3",
-            DataType::LargeList(Arc::new(Field::new("item", DataType::Utf8, true))),
+            DataType::LargeList(Arc::new(Field::new("element", DataType::Utf8, true))),
             true,
         ),
     ];
@@ -220,17 +220,17 @@ fn create_list_primitive_bench_batch_non_null(
     let fields = vec![
         Field::new(
             "_1",
-            DataType::List(Arc::new(Field::new("item", DataType::Int32, false))),
+            DataType::List(Arc::new(Field::new("element", DataType::Int32, false))),
             false,
         ),
         Field::new(
             "_2",
-            DataType::List(Arc::new(Field::new("item", DataType::Boolean, false))),
+            DataType::List(Arc::new(Field::new("element", DataType::Boolean, false))),
             false,
         ),
         Field::new(
             "_3",
-            DataType::LargeList(Arc::new(Field::new("item", DataType::Utf8, false))),
+            DataType::LargeList(Arc::new(Field::new("element", DataType::Utf8, false))),
             false,
         ),
     ];
@@ -275,9 +275,9 @@ fn _create_nested_bench_batch(
         Field::new(
             "_2",
             DataType::LargeList(Arc::new(Field::new(
-                "item",
+                "element",
                 DataType::List(Arc::new(Field::new(
-                    "item",
+                    "element",
                     DataType::Struct(Fields::from(vec![
                         Field::new(
                             "_1",

@@ -139,7 +139,7 @@ impl Codec {
             }
             Self::Duration => DataType::Interval(IntervalUnit::MonthDayNano),
             Self::Fixed(size) => DataType::FixedSizeBinary(*size),
-            Self::List(f) => DataType::List(Arc::new(f.field_with_name("item"))),
+            Self::List(f) => DataType::List(Arc::new(f.field_with_name("element"))),
             Self::Struct(f) => DataType::Struct(f.iter().map(|x| x.field()).collect()),
         }
     }

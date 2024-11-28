@@ -410,7 +410,7 @@ fn test_empty_offsets_list_equal() {
     let empty_offsets: [u8; 0] = [];
 
     let a: ListArray = ArrayDataBuilder::new(DataType::List(Arc::new(Field::new(
-        "item",
+        "element",
         DataType::Int32,
         true,
     ))))
@@ -423,7 +423,7 @@ fn test_empty_offsets_list_equal() {
     .into();
 
     let b: ListArray = ArrayDataBuilder::new(DataType::List(Arc::new(Field::new(
-        "item",
+        "element",
         DataType::Int32,
         true,
     ))))
@@ -438,7 +438,7 @@ fn test_empty_offsets_list_equal() {
     test_equal(&a, &b, true);
 
     let c: ListArray = ArrayDataBuilder::new(DataType::List(Arc::new(Field::new(
-        "item",
+        "element",
         DataType::Int32,
         true,
     ))))
@@ -476,7 +476,7 @@ fn test_list_null() {
     // a list where the nullness of values is determined by the list's bitmap
     let c_values = Int32Array::from(vec![1, 2, -1, -2, 3, 4, -3, -4]);
     let c: ListArray = ArrayDataBuilder::new(DataType::List(Arc::new(Field::new(
-        "item",
+        "element",
         DataType::Int32,
         true,
     ))))
@@ -499,7 +499,7 @@ fn test_list_null() {
         None,
     ]);
     let d: ListArray = ArrayDataBuilder::new(DataType::List(Arc::new(Field::new(
-        "item",
+        "element",
         DataType::Int32,
         true,
     ))))

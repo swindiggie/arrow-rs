@@ -722,7 +722,7 @@ mod tests {
 
         let schema = Arc::new(Schema::new(vec![Field::new_list(
             "dict_list",
-            Field::new_dictionary("item", DataType::UInt16, DataType::Utf8, true),
+            Field::new_dictionary("element", DataType::UInt16, DataType::Utf8, true),
             true,
         )]));
 
@@ -736,7 +736,7 @@ mod tests {
         let mut decoder = FlightDataDecoder::new(encoder);
         let expected_schema = Schema::new(vec![Field::new_list(
             "dict_list",
-            Field::new("item", DataType::Utf8, true),
+            Field::new("element", DataType::Utf8, true),
             true,
         )]);
 
@@ -770,7 +770,7 @@ mod tests {
     async fn test_dictionary_struct_hydration() {
         let struct_fields = vec![Field::new_list(
             "dict_list",
-            Field::new_dictionary("item", DataType::UInt16, DataType::Utf8, true),
+            Field::new_dictionary("element", DataType::UInt16, DataType::Utf8, true),
             true,
         )];
 
@@ -804,7 +804,7 @@ mod tests {
             "struct",
             vec![Field::new_list(
                 "dict_list",
-                Field::new("item", DataType::Utf8, true),
+                Field::new("element", DataType::Utf8, true),
                 true,
             )],
             true,
@@ -842,7 +842,7 @@ mod tests {
     async fn test_dictionary_union_hydration() {
         let struct_fields = vec![Field::new_list(
             "dict_list",
-            Field::new_dictionary("item", DataType::UInt16, DataType::Utf8, true),
+            Field::new_dictionary("element", DataType::UInt16, DataType::Utf8, true),
             true,
         )];
 
@@ -851,7 +851,7 @@ mod tests {
                 0,
                 Arc::new(Field::new_list(
                     "dict_list",
-                    Field::new_dictionary("item", DataType::UInt16, DataType::Utf8, true),
+                    Field::new_dictionary("element", DataType::UInt16, DataType::Utf8, true),
                     true,
                 )),
             ),
@@ -866,7 +866,7 @@ mod tests {
 
         let struct_fields = vec![Field::new_list(
             "dict_list",
-            Field::new_dictionary("item", DataType::UInt16, DataType::Utf8, true),
+            Field::new_dictionary("element", DataType::UInt16, DataType::Utf8, true),
             true,
         )];
 
@@ -943,12 +943,12 @@ mod tests {
 
         let hydrated_struct_fields = vec![Field::new_list(
             "dict_list",
-            Field::new("item", DataType::Utf8, true),
+            Field::new("element", DataType::Utf8, true),
             true,
         )];
 
         let hydrated_union_fields = vec![
-            Field::new_list("dict_list", Field::new("item", DataType::Utf8, true), true),
+            Field::new_list("dict_list", Field::new("element", DataType::Utf8, true), true),
             Field::new_struct("struct", hydrated_struct_fields.clone(), true),
             Field::new("string", DataType::Utf8, true),
         ];

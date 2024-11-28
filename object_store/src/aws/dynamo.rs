@@ -456,7 +456,7 @@ struct ErrorResponse<'a> {
     #[serde(rename = "__type")]
     error: &'a str,
 
-    #[serde(borrow, default, rename = "Item")]
+    #[serde(borrow, default, rename = "element")]
     item: HashMap<&'a str, AttributeValue<'a>>,
 }
 

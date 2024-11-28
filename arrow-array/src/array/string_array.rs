@@ -453,7 +453,7 @@ mod tests {
         let offsets = [0, 5, 8, 15].map(|n| O::from_usize(n).unwrap());
         let null_buffer = Buffer::from_slice_ref([0b101]);
         let data_type = GenericListArray::<O>::DATA_TYPE_CONSTRUCTOR(Arc::new(Field::new(
-            "item",
+            "element",
             DataType::UInt8,
             false,
         )));
@@ -501,7 +501,7 @@ mod tests {
         // It is possible to create a null struct containing a non-nullable child
         // see https://github.com/apache/arrow-rs/pull/3244 for details
         let data_type = GenericListArray::<O>::DATA_TYPE_CONSTRUCTOR(Arc::new(Field::new(
-            "item",
+            "element",
             DataType::UInt8,
             true,
         )));
@@ -539,7 +539,7 @@ mod tests {
 
         let offsets = [0, 2, 3].map(|n| O::from_usize(n).unwrap());
         let data_type = GenericListArray::<O>::DATA_TYPE_CONSTRUCTOR(Arc::new(Field::new(
-            "item",
+            "element",
             DataType::UInt16,
             false,
         )));

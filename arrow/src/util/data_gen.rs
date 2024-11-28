@@ -408,7 +408,7 @@ mod tests {
             Field::new("a", DataType::Int32, false),
             Field::new(
                 "b",
-                DataType::List(Arc::new(Field::new("item", DataType::LargeUtf8, false))),
+                DataType::List(Arc::new(Field::new("element", DataType::LargeUtf8, false))),
                 false,
             ),
             Field::new("a", DataType::Int32, false),
@@ -439,9 +439,9 @@ mod tests {
             Field::new(
                 "c",
                 DataType::LargeList(Arc::new(Field::new(
-                    "item",
+                    "element",
                     DataType::List(Arc::new(Field::new(
-                        "item",
+                        "element",
                         DataType::FixedSizeBinary(6),
                         true,
                     ))),

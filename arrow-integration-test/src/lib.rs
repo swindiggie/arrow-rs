@@ -1158,7 +1158,7 @@ mod tests {
             Field::new("utf8s", DataType::Utf8, true),
             Field::new(
                 "lists",
-                DataType::List(Arc::new(Field::new("item", DataType::Int32, true))),
+                DataType::List(Arc::new(Field::new("element", DataType::Int32, true))),
                 true,
             ),
             Field::new(
@@ -1215,7 +1215,7 @@ mod tests {
 
         let value_data = Int32Array::from(vec![None, Some(2), None, None]);
         let value_offsets = Buffer::from_slice_ref([0, 3, 4, 4]);
-        let list_data_type = DataType::List(Arc::new(Field::new("item", DataType::Int32, true)));
+        let list_data_type = DataType::List(Arc::new(Field::new("element", DataType::Int32, true)));
         let list_data = ArrayData::builder(list_data_type)
             .len(3)
             .add_buffer(value_offsets)

@@ -1365,10 +1365,10 @@ mod tests {
 
     fn create_test_projection_schema() -> Schema {
         // define field types
-        let list_data_type = DataType::List(Arc::new(Field::new("item", DataType::Int32, true)));
+        let list_data_type = DataType::List(Arc::new(Field::new("element", DataType::Int32, true)));
 
         let fixed_size_list_data_type =
-            DataType::FixedSizeList(Arc::new(Field::new("item", DataType::Int32, false)), 3);
+            DataType::FixedSizeList(Arc::new(Field::new("element", DataType::Int32, false)), 3);
 
         let union_fields = UnionFields::new(
             vec![0, 1],
@@ -1382,7 +1382,7 @@ mod tests {
 
         let struct_fields = Fields::from(vec![
             Field::new("id", DataType::Int32, false),
-            Field::new_list("list", Field::new("item", DataType::Int8, true), false),
+            Field::new_list("list", Field::new("element", DataType::Int8, true), false),
         ]);
         let struct_data_type = DataType::Struct(struct_fields);
 
@@ -1868,7 +1868,7 @@ mod tests {
     fn test_roundtrip_stream_dict_of_list_of_dict() {
         // list
         let list_data_type = DataType::List(Arc::new(Field::new_dict(
-            "item",
+            "element",
             DataType::Dictionary(Box::new(DataType::Int8), Box::new(DataType::Utf8)),
             true,
             1,
@@ -1879,7 +1879,7 @@ mod tests {
 
         // large list
         let list_data_type = DataType::LargeList(Arc::new(Field::new_dict(
-            "item",
+            "element",
             DataType::Dictionary(Box::new(DataType::Int8), Box::new(DataType::Utf8)),
             true,
             1,
@@ -1898,7 +1898,7 @@ mod tests {
 
         let list_data_type = DataType::FixedSizeList(
             Arc::new(Field::new_dict(
-                "item",
+                "element",
                 DataType::Dictionary(Box::new(DataType::Int8), Box::new(DataType::Utf8)),
                 true,
                 1,

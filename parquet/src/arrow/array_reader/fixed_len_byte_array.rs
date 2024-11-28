@@ -442,7 +442,7 @@ mod tests {
 
         // [[], [1], [2, 3], null, [4], null, [6, 7, 8]]
         let data = ArrayDataBuilder::new(ArrowType::List(Arc::new(Field::new(
-            "item",
+            "element",
             decimals.data_type().clone(),
             false,
         ))))

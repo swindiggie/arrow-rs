@@ -355,7 +355,7 @@ pub fn regexp_match(
         if regex.is_none() {
             return Ok(new_null_array(
                 &DataType::List(Arc::new(Field::new(
-                    "item",
+                    "element",
                     array.data_type().clone(),
                     true,
                 ))),

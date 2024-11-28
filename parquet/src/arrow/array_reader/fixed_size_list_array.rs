@@ -280,7 +280,7 @@ mod tests {
             Box::new(item_array_reader),
             3,
             ArrowType::FixedSizeList(
-                Arc::new(Field::new("item", ArrowType::Int32, true)),
+                Arc::new(Field::new("element", ArrowType::Int32, true)),
                 3,
             ),
             2,
@@ -329,7 +329,7 @@ mod tests {
             Box::new(item_array_reader),
             2,
             ArrowType::FixedSizeList(
-                Arc::new(Field::new("item", ArrowType::Int32, true)),
+                Arc::new(Field::new("element", ArrowType::Int32, true)),
                 2,
             ),
             1,
@@ -355,11 +355,11 @@ mod tests {
         //   [[null, null]],
         // ]
         let l2_type = ArrowType::FixedSizeList(
-            Arc::new(Field::new("item", ArrowType::Int32, true)),
+            Arc::new(Field::new("element", ArrowType::Int32, true)),
             2,
         );
         let l1_type = ArrowType::FixedSizeList(
-            Arc::new(Field::new("item", l2_type.clone(), false)),
+            Arc::new(Field::new("element", l2_type.clone(), false)),
             1,
         );
 
@@ -455,7 +455,7 @@ mod tests {
             Box::new(item_array_reader),
             0,
             ArrowType::FixedSizeList(
-                Arc::new(Field::new("item", ArrowType::Int32, true)),
+                Arc::new(Field::new("element", ArrowType::Int32, true)),
                 0,
             ),
             2,
@@ -504,9 +504,9 @@ mod tests {
         ]));
 
         let inner_type =
-            ArrowType::List(Arc::new(Field::new("item", ArrowType::Int32, true)));
+            ArrowType::List(Arc::new(Field::new("element", ArrowType::Int32, true)));
         let list_type = ArrowType::FixedSizeList(
-            Arc::new(Field::new("item", inner_type.clone(), true)),
+            Arc::new(Field::new("element", inner_type.clone(), true)),
             2,
         );
 
@@ -576,7 +576,7 @@ mod tests {
             Field::new(
                 "list",
                 ArrowType::FixedSizeList(
-                    Arc::new(Field::new("item", ArrowType::Int32, true)),
+                    Arc::new(Field::new("element", ArrowType::Int32, true)),
                     4,
                 ),
                 true,
@@ -644,7 +644,7 @@ mod tests {
         let schema = Arc::new(Schema::new(vec![Field::new(
             "list",
             ArrowType::FixedSizeList(
-                Arc::new(Field::new("item", ArrowType::Int32, true)),
+                Arc::new(Field::new("element", ArrowType::Int32, true)),
                 4,
             ),
             true,

@@ -46,7 +46,7 @@ use std::sync::Arc;
 ///        vec![Field::new(
 ///            "value_list",
 ///            DataType::List(Arc::new(Field::new(
-///                "item",
+///                "element",
 ///                DataType::Struct(Fields::from(vec![
 ///                    Field::new("key", DataType::Utf8, true),
 ///                    Field::new("value", DataType::Utf8, true),

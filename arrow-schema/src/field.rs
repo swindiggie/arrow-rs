@@ -133,13 +133,13 @@ impl Field {
     /// [`DataType::LargeList`]
     ///
     /// While not required, this method follows the convention of naming the
-    /// `Field` `"item"`.
+    /// `Field` `"element"`.
     ///
     /// # Example
     /// ```
     /// # use arrow_schema::{Field, DataType};
     /// assert_eq!(
-    ///   Field::new("item", DataType::Int32, true),
+    ///   Field::new("element", DataType::Int32, true),
     ///   Field::new_list_field(DataType::Int32, true)
     /// );
     /// ```

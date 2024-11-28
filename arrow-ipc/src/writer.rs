@@ -2331,7 +2331,7 @@ mod tests {
 
     #[test]
     fn encode_lists() {
-        let val_inner = Field::new("item", DataType::UInt32, true);
+        let val_inner = Field::new("element", DataType::UInt32, true);
         let val_list_field = Field::new("val", DataType::List(Arc::new(val_inner)), false);
         let schema = Arc::new(Schema::new(vec![val_list_field]));
 
@@ -2343,7 +2343,7 @@ mod tests {
 
     #[test]
     fn encode_empty_list() {
-        let val_inner = Field::new("item", DataType::UInt32, true);
+        let val_inner = Field::new("element", DataType::UInt32, true);
         let val_list_field = Field::new("val", DataType::List(Arc::new(val_inner)), false);
         let schema = Arc::new(Schema::new(vec![val_list_field]));
 
@@ -2358,7 +2358,7 @@ mod tests {
 
     #[test]
     fn encode_large_lists() {
-        let val_inner = Field::new("item", DataType::UInt32, true);
+        let val_inner = Field::new("element", DataType::UInt32, true);
         let val_list_field = Field::new("val", DataType::LargeList(Arc::new(val_inner)), false);
         let schema = Arc::new(Schema::new(vec![val_list_field]));
 
@@ -2372,8 +2372,8 @@ mod tests {
 
     #[test]
     fn encode_nested_lists() {
-        let inner_int = Arc::new(Field::new("item", DataType::UInt32, true));
-        let inner_list_field = Arc::new(Field::new("item", DataType::List(inner_int), true));
+        let inner_int = Arc::new(Field::new("element", DataType::UInt32, true));
+        let inner_list_field = Arc::new(Field::new("element", DataType::List(inner_int), true));
         let list_field = Field::new("val", DataType::List(inner_list_field), true);
         let schema = Arc::new(Schema::new(vec![list_field]));
 

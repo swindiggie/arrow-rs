@@ -266,7 +266,7 @@ mod tests {
         data_type: ArrowType,
         item_nullable: bool,
     ) -> ArrowType {
-        let field = Arc::new(Field::new("item", data_type, item_nullable));
+        let field = Arc::new(Field::new("element", data_type, item_nullable));
         GenericListArray::<OffsetSize>::DATA_TYPE_CONSTRUCTOR(field)
     }
 

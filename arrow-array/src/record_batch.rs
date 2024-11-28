@@ -801,7 +801,7 @@ mod tests {
     fn create_record_batch_field_name_mismatch() {
         let fields = vec![
             Field::new("a1", DataType::Int32, false),
-            Field::new_list("a2", Field::new("item", DataType::Int8, false), false),
+            Field::new_list("a2", Field::new("element", DataType::Int8, false), false),
         ];
         let schema = Arc::new(Schema::new(vec![Field::new_struct("a", fields, true)]));
 

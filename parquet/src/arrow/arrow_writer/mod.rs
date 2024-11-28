@@ -222,11 +222,11 @@ impl<W: Write + Send> ArrowWriter<W> {
     ///
     /// This will fail if the `batch`'s schema does not match the writer's schema.
     pub fn write(&mut self, batch: &RecordBatch) -> Result<()> {
-        return Err(ParquetError::NYI(
-            format!(
-                "Test error"
-            )
-        ));
+        // return Err(ParquetError::NYI(
+        //     format!(
+        //         "Test error"
+        //     )
+        // ));
         if batch.num_rows() == 0 {
             return Ok(());
         }
@@ -1144,7 +1144,7 @@ mod tests {
         // define schema
         let schema = Schema::new(vec![Field::new(
             "a",
-            DataType::List(Arc::new(Field::new("item", DataType::Int32, false))),
+            DataType::List(Arc::new(Field::new("element", DataType::Int32, false))),
             true,
         )]);
 
@@ -1157,7 +1157,7 @@ mod tests {
 
         // Construct a list array from the above two
         let a_list_data = ArrayData::builder(DataType::List(Arc::new(Field::new(
-            "item",
+            "element",
             DataType::Int32,
             false,
         ))))
@@ -1184,7 +1184,7 @@ mod tests {
         // define schema
         let schema = Schema::new(vec![Field::new(
             "a",
-            DataType::List(Arc::new(Field::new("item", DataType::Int32, false))),
+            DataType::List(Arc::new(Field::new("element", DataType::Int32, false))),
             false,
         )]);
 
@@ -1197,7 +1197,7 @@ mod tests {
 
         // Construct a list array from the above two
         let a_list_data = ArrayData::builder(DataType::List(Arc::new(Field::new(
-            "item",
+            "element",
             DataType::Int32,
             false,
         ))))
@@ -1315,12 +1315,12 @@ mod tests {
         let struct_field_f = Arc::new(Field::new("f", DataType::Float32, true));
         let struct_field_g = Arc::new(Field::new_list(
             "g",
-            Field::new("item", DataType::Int16, true),
+            Field::new("element", DataType::Int16, true),
             false,
         ));
         let struct_field_h = Arc::new(Field::new_list(
             "h",
-            Field::new("item", DataType::Int16, false),
+            Field::new("element", DataType::Int16, false),
             true,
         ));
         let struct_field_e = Arc::new(Field::new_struct(
@@ -2202,7 +2202,7 @@ mod tests {
 
     #[test]
     fn null_list_single_column() {
-        let null_field = Field::new("item", DataType::Null, true);
+        let null_field = Field::new("element", DataType::Null, true);
         let list_field = Field::new("emptylist", DataType::List(Arc::new(null_field)), true);
 
         let schema = Schema::new(vec![list_field]);
@@ -2211,7 +2211,7 @@ mod tests {
         let a_values = NullArray::new(2);
         let a_value_offsets = arrow::buffer::Buffer::from(&[0, 0, 0, 2].to_byte_slice());
         let a_list_data = ArrayData::builder(DataType::List(Arc::new(Field::new(
-            "item",
+            "element",
             DataType::Null,
             true,
         ))))
@@ -2241,7 +2241,7 @@ mod tests {
         let a_values = Int32Array::from(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
         let a_value_offsets = arrow::buffer::Buffer::from(&[0, 1, 3, 3, 6, 10].to_byte_slice());
         let a_list_data = ArrayData::builder(DataType::List(Arc::new(Field::new(
-            "item",
+            "element",
             DataType::Int32,
             false,
         ))))
