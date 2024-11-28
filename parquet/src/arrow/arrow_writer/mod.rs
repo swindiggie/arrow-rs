@@ -222,6 +222,11 @@ impl<W: Write + Send> ArrowWriter<W> {
     ///
     /// This will fail if the `batch`'s schema does not match the writer's schema.
     pub fn write(&mut self, batch: &RecordBatch) -> Result<()> {
+        return Err(ParquetError::NYI(
+            format!(
+                "Test error"
+            )
+        ));
         if batch.num_rows() == 0 {
             return Ok(());
         }
