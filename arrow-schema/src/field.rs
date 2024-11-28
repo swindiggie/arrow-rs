@@ -144,7 +144,7 @@ impl Field {
     /// );
     /// ```
     pub fn new_list_field(data_type: DataType, nullable: bool) -> Self {
-        Self::new("item", data_type, nullable)
+        Self::new("element", data_type, nullable) // Changed to element to adhere to the parquet spec
     }
 
     /// Creates a new field that has additional dictionary information
